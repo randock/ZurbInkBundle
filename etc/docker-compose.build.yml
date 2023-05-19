@@ -1,0 +1,15 @@
+version: '3'
+services:
+  fpm:
+    build: etc/docker/development/fpm
+    ports:
+      - "2222:22"
+      - "8443:8443"
+    env_file:
+      - .env
+    volumes:
+      - "$PWD:/app"
+    working_dir: /app
+    environment:
+      - SYMFONY_PHPUNIT_VERSION=9.6
+    container_name: zurb_ink_bundle
